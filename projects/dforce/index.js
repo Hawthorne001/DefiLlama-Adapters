@@ -154,7 +154,7 @@ async function getTVLOfdToken(api) {
 }
 
 function getTVLByChain(chain) {
-  return async (time, ethBlock, chainBlocks, { api }) => {
+  return async (api) => {
     if (chain == "ethereum") {
       const ownerTokens = [[usdxReservedTokens, usdxPool], [[goldxReserve], goldxProtocol]]
       await api.sumTokens({ ownerTokens })
@@ -195,6 +195,9 @@ async function staking(timestamp, ethBlock, chainBlocks) {
 module.exports = {
   ...generalizedChainExports(chainTvl, ['ethereum', "bsc", "arbitrum", "optimism", "polygon", "avax", "kava", "conflux"]),
   start: 1564165044, // Jul-27-2019 02:17:24 AM +UTC
+  hallmarks: [
+    [Math.floor(new Date('2023-12-19')/1e3), 'Unitus spin-off'],
+  ],
 }
 
 module.exports.ethereum.staking = staking
